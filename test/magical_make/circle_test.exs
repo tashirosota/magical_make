@@ -3,6 +3,6 @@ defmodule MagicalMake.CircleTest do
   doctest MagicalMake.Circle
 
   test "select" do
-    assert MagicalMake.Circle.select =~ "MAGICAL MAKE"
+    assert MagicalMake.Circle.select() =~ "MAGICAL MAKE"
   end
 end
