@@ -1,4 +1,22 @@
 defmodule MagicalMake.Font do
-  def decorate(opts \\ [color: nil, font: nil, size: nil]) do
+  @esc "\e"
+  @colors [
+    black: "#{@esc}[30m",
+    red: "#{@esc}[31m",
+    green: "#{@esc}[32m",
+    yellow: "#{@esc}[33m",
+    blue: "#{@esc}[34m",
+    magenta: "#{@esc}[35m",
+    cyan: "#{@esc}[36m",
+    white: "#{@esc}[37m"
+  ]
+  @bold "#{@esc}[1m"
+  @italic "#{@esc}[3m"
+  @double_underline "#{@esc}[21m"
+
+  def decorate(text, opts \\ [color_code: nil, other_code: nil]) do
+    color_code = Keyword.get(opts, :color_code) || @colors |> Keyword.values() |> Enum.random()
+    other_code = Keyword.get(opts, :other_code) || ""
+    color_code <> other_code <> text
   end
 end

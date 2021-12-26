@@ -1,7 +1,7 @@
 defmodule MagicalMake do
   import MagicalMake.Directer, only: [prepare: 1]
   import MagicalMake.Circle, only: [select: 0]
-  import MagicalMake.Font, only: [decorate: 1]
+  import MagicalMake.Font, only: [decorate: 2]
   import MagicalMake.Painter, only: [draw: 1]
   import MagicalMake.Command, only: [exec: 1, find: 1]
   @interval 0.2
@@ -32,7 +32,7 @@ defmodule MagicalMake do
     prepare(@interval)
 
     select()
-    |> decorate()
+    |> decorate([])
     |> draw()
 
     Process.sleep(@interval)
