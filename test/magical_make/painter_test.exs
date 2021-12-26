@@ -4,6 +4,6 @@ defmodule MagicalMake.PainterTest do
   test "draw" do
     text = MagicalMake.Circle.select()
 
-    assert MagicalMake.Painter.draw(text) == :ok
+    assert MagicalMake.Painter.draw(text, 100) == :ok
   end
 end

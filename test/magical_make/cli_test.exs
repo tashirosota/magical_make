@@ -2,12 +2,8 @@ defmodule MagicalMake.CLITest do
   use ExUnit.Case
 
   test "main" do
-    cmd = "test_command"
+    cmd = "hello"
 
-    assert_raise MagicalMake.CommandMissing,
-                 "`#{cmd}` is missing in Makefile（or Magicfile, Grimoire）",
-                 fn ->
-                   MagicalMake.CLI.main(cmd)
-                 end
+    assert MagicalMake.CLI.main(cmd) == :ok
   end
 end

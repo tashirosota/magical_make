@@ -1,7 +1,7 @@
 defmodule MagicalMake.FontTest do
   use ExUnit.Case
 
-  test "decorate" do
-    assert MagicalMake.Font.decorate("aaa") =~ "\e"
+  test "create_decoration" do
+    assert MagicalMake.Font.create_decoration() =~ "\e"
   end
 end

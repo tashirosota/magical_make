@@ -4,12 +4,8 @@ defmodule MagicalMakeTest do
   # doctest MagicalMake
 
   test ".execute" do
-    cmd = "test_command"
+    cmd = "hello"
 
-    assert_raise MagicalMake.CommandMissing,
-                 "`#{cmd}` is missing in Makefile（or Magicfile, Grimoire）",
-                 fn ->
-                   MagicalMake.execute(cmd)
-                 end
+    assert MagicalMake.execute(cmd) == :ok
   end
 end

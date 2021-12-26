@@ -1,10 +1,11 @@
 defmodule MagicalMake do
-  import MagicalMake.Directer, only: [prepare: 1]
+  import MagicalMake.Setup, only: [prepare: 2]
   import MagicalMake.Circle, only: [select: 0]
-  import MagicalMake.Font, only: [decorate: 2]
-  import MagicalMake.Painter, only: [draw: 1]
-  import MagicalMake.Command, only: [exec: 1, find: 1]
-  @interval 0.2
+  import MagicalMake.Font, only: [create_decoration: 1]
+  import MagicalMake.Painter, only: [draw: 2]
+  import MagicalMake.Command, only: [make_exec: 1, check!: 0]
+  @interval 500
+  @final_interval 1000
 
   @moduledoc """
   Documentation for `MagicalMake`.
@@ -20,22 +21,10 @@ defmodule MagicalMake do
 
   """
   def execute(make_command) do
-    command =
-      with {:ok, command} <- find(make_command) do
-        command
-      else
-        _ ->
-          raise MagicalMake.CommandMissing,
-            message: "`#{make_command}` is missing in Makefile（or Magicfile, Grimoire）"
-      end
-
-    prepare(@interval)
-
-    select()
-    |> decorate([])
-    |> draw()
-
-    Process.sleep(@interval)
-    exec(command)
+    check!()
+    font_decoration = create_decoration([])
+    prepare(@interval, font_decoration)
+    (font_decoration <> select()) |> draw(@final_interval)
+    make_exec(make_command)
   end
 end

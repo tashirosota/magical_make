@@ -14,9 +14,9 @@ defmodule MagicalMake.Font do
   @italic "#{@esc}[3m"
   @double_underline "#{@esc}[21m"
 
-  def decorate(text, opts \\ [color_code: nil, other_code: nil]) do
+  def create_decoration(opts \\ [color_code: nil, other_code: nil]) do
     color_code = Keyword.get(opts, :color_code) || @colors |> Keyword.values() |> Enum.random()
     other_code = Keyword.get(opts, :other_code) || ""
-    color_code <> other_code <> text
+    color_code <> other_code
   end
 end
