@@ -1,8 +1,12 @@
 defmodule MagicalMakeTest do
   use ExUnit.Case
-  doctest MagicalMake
+  # TODO: doctestに関して
+  # doctest MagicalMake
 
-  test "greets the world" do
-    assert MagicalMake.hello() == :world
+  test ".execute" do
+    cmd = "test_command"
+    assert_raise MagicalMake.CommandMissing,"`#{cmd}` is missing in Makefile（or Magicfile, Grimoire）", fn ->
+      MagicalMake.execute(cmd)
+    end
   end
 end
