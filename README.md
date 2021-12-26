@@ -1,11 +1,15 @@
+<!-- :TODO
 # MagicalMake
 
-**TODO: Add description**
+**A cool tool to decorate your makeup commands with Magic Circle**
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `magical_make` to your list of dependencies in `mix.exs`:
+```
+$ brew install tashirosota/magical_make
+$ mgc -h
+
+```
 
 ```elixir
 def deps do
@@ -18,4 +22,4 @@ end
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at <https://hexdocs.pm/magical_make>.
-
+ -->
