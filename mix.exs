@@ -1,8 +1,8 @@
 defmodule MagicalMake.MixProject do
   use Mix.Project
   @versoin "0.1.0"
-  # @source_url "https://github.com/tashirosota/magical_make"
-  # @description "A cool tool to decorate your makeup commands with Magic Circle"
+  @source_url "https://github.com/tashirosota/magical_make"
+  @description "A cool tool to decorate your makeup commands with Magic Circle"
 
   def project do
     [
@@ -11,19 +11,12 @@ defmodule MagicalMake.MixProject do
       elixir: "~> 1.13",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      escript: escript()
-      # TODO: 挙動確認
-      # # docs
-      # description: @description,
-      # name: "MagicalMake",
-      # source_url: @source_url,
-      # docs: [
-      #   main: "readme",
-      #   source_url: @source_url,
-      #   extras: [
-      #     "README.md"
-      #   ]
-      # ]
+      escript: escript(),
+      # docs
+      description: @description,
+      name: "MagicalMake",
+      source_url: @source_url,
+      package: package()
     ]
   end
 
@@ -35,6 +28,14 @@ defmodule MagicalMake.MixProject do
 
   defp escript do
     [main_module: MagicalMake.CLI, name: :mgc]
+  end
+
+  defp package() do
+    [
+      licenses: ["Apache-2.0"],
+      maintainers: ["Sota Tashiro"],
+      links: %{"GitHub" => @source_url}
+    ]
   end
 
   defp deps do
