@@ -1,6 +1,6 @@
 defmodule MagicalMake.Painter do
-  @clear_command "'\e[2J\e[3J\e[H'"
-  @reset_font_code "\e[0m"
+  import MagicalMake.SystemCommand
+
   def draw(text, interval) do
     IO.puts(text)
     Process.sleep(interval)
@@ -9,7 +9,7 @@ defmodule MagicalMake.Painter do
   end
 
   def refresh! do
-    IO.puts(@reset_font_code)
-    System.cmd("printf", [@clear_command], into: IO.stream(:stdio, :line))
+    :font_reset |> sys_cmd()
+    :clear |> sys_cmd()
   end
 end

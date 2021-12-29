@@ -1,0 +1,9 @@
+version: '3.2'
+services:
+  linux:
+    image: elixir:1.13.1
+    container_name: elixir
+    environment:
+      MIX_ENV: test
+    volumes:
+      - .:.

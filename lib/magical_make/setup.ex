@@ -1,17 +1,16 @@
 defmodule MagicalMake.Setup do
   import MagicalMake.Painter
   import MagicalMake.Circle
+  import MagicalMake.SystemCommand
 
-  @setup_files [
-    "lib/texts/setup/1.txt",
-    "lib/texts/setup/2.txt",
-    "lib/texts/setup/3.txt",
-    "lib/texts/setup/4.txt",
-    "lib/texts/setup/5.txt"
-  ]
+  @setup_files %{
+    small: "lib/texts/setup/small/",
+    medium: "lib/texts/setup/medium/",
+    large: "lib/texts/setup/large/"
+  }
 
   def prepare(interval, font_decoration) do
-    prepare(@setup_files, interval, font_decoration)
+    prepare(get_files(), interval, font_decoration)
   end
 
   defp prepare([file | files], interval, font_decoration) do
@@ -19,5 +18,20 @@ defmodule MagicalMake.Setup do
     prepare(files, interval, font_decoration)
   end
 
-  defp prepare([], interval, font_decoration), do: :ok
+  defp prepare([], _, _), do: :ok
+
+  defp get_files do
+    cols = sys_cmd(:cols) |> elem(0) |> String.replace("\n", "") |> String.to_integer()
+
+    cond do
+      cols > 300 ->
+        @setup_files.large |> File.ls() |> elem(1) |> Enum.map(&(@setup_files.large <> &1))
+
+      cols > 150 ->
+        @setup_files.medium |> File.ls() |> elem(1) |> Enum.map(&(@setup_files.medium <> &1))
+
+      true ->
+        @setup_files.small |> File.ls() |> elem(1) |> Enum.map(&(@setup_files.small <> &1))
+    end
+  end
 end

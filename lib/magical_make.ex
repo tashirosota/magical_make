@@ -3,7 +3,7 @@ defmodule MagicalMake do
   import MagicalMake.Circle, only: [select: 0]
   import MagicalMake.Font, only: [create_decoration: 1]
   import MagicalMake.Painter, only: [draw: 2]
-  import MagicalMake.Command, only: [make_exec: 1, check!: 0]
+  import MagicalMake.SystemCommand, only: [make: 1, make_check!: 0]
   @interval 500
   @final_interval 1000
 
@@ -21,10 +21,11 @@ defmodule MagicalMake do
 
   """
   def execute(make_command) do
-    check!()
+    make_check!()
     font_decoration = create_decoration([])
     prepare(@interval, font_decoration)
     (font_decoration <> select()) |> draw(@final_interval)
-    make_exec(make_command)
+    make(make_command)
+    :ok
   end
 end

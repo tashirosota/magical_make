@@ -4,7 +4,7 @@ defmodule MagicalMake.SetupTest do
 
   test "prepare" do
     interval = 1000
-    font_decoration = create_decoration
+    font_decoration = create_decoration()
     assert MagicalMake.Setup.prepare(interval, font_decoration) == :ok
   end
 end
