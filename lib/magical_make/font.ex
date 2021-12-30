@@ -7,8 +7,7 @@ defmodule MagicalMake.Font do
     yellow: "#{@esc}[33m",
     blue: "#{@esc}[34m",
     magenta: "#{@esc}[35m",
-    cyan: "#{@esc}[36m",
-    white: "#{@esc}[37m"
+    cyan: "#{@esc}[36m"
   ]
   @bold "#{@esc}[1m"
   @italic "#{@esc}[3m"

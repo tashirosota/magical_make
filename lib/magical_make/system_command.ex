@@ -1,11 +1,6 @@
 defmodule MagicalMake.SystemCommand do
   @make "make"
   @commands [
-    cols: %{
-      command: "tput",
-      args: ["cols"],
-      opts: []
-    },
     clear: %{
       command: "printf",
       args: ["'\e[2J\e[3J\e[H'"],
