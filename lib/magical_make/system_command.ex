@@ -30,7 +30,7 @@ defmodule MagicalMake.SystemCommand do
     exec(
       "make",
       [command |> to_string()],
-      [into: IO.stream(:stdio, :line)]
+      into: IO.stream(:stdio, :line)
     )
   end
 
