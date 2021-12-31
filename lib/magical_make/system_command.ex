@@ -1,5 +1,4 @@
 defmodule MagicalMake.SystemCommand do
-  @make "make"
   @commands [
     clear: %{
       command: "printf",
@@ -13,22 +12,6 @@ defmodule MagicalMake.SystemCommand do
     }
   ]
 
-  def make_check! do
-    System.find_executable(@make) ||
-      raise MagicalMake.MakefileMissing,
-        message: "Makefile does not exist. Must exist in current directory."
-
-    :ok
-  end
-
-  def make(command) do
-    exec(
-      "make",
-      [command |> to_string()],
-      into: IO.stream(:stdio, :line)
-    )
-  end
-
   def sys_cmd(command) do
     command_map = Keyword.fetch!(@commands, command)
 
@@ -39,7 +22,7 @@ defmodule MagicalMake.SystemCommand do
     )
   end
 
-  defp exec(command, args, opts \\ []) do
+  def exec(command, args, opts) do
     System.cmd(
       command,
       args,

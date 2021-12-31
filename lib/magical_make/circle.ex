@@ -1,27 +1,23 @@
 defmodule MagicalMake.Circle do
   @txt_file_numbers 1..5
+  @last_word "M"
   @gsub_words [
     ".",
     ";",
     "i",
     "I",
-    "M"
+    @last_word
   ]
 
   def draw_circle(interval, font_decoration) do
-    circle_txt = "lib/texts/circles/#{@txt_file_numbers |> Enum.random()}.txt" |> read_text()
+    {:ok, circle_txt} =
+      "lib/texts/circles/#{@txt_file_numbers |> Enum.random()}.txt" |> File.read()
 
-    Enum.each(@gsub_words, fn word ->
+    Enum.each(@gsub_words ++ [], fn word ->
       (font_decoration <> String.replace(circle_txt, ~r/\S/, word))
       |> MagicalMake.Painter.draw(interval)
     end)
 
-    [last_word | _] = Enum.reverse(@gsub_words)
-    font_decoration <> String.replace(circle_txt, ~r/\S/, last_word)
-  end
-
-  defp read_text(file_path) do
-    {:ok, text} = file_path |> File.read()
-    text
+    font_decoration <> String.replace(circle_txt, ~r/\S/, @last_word)
   end
 end

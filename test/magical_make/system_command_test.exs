@@ -1,7 +1,11 @@
 defmodule MagicalMake.SystemCommandTest do
   use ExUnit.Case
+  # TODO: imp
+  # test "sys_cmd" do
 
-  test "make_check!" do
-    assert MagicalMake.SystemCommand.make_check!() == :ok
-  end
+  # end
+
+  # test "exec" do
+
+  # end
 end

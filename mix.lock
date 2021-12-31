@@ -1,0 +1,4 @@
+%{
+  "chisel": {:hex, :chisel, "0.2.0", "4b0f9325fa508ef2bb4d4d6871e0df65aa17f06339e13af2c780b96621e58a56", [:mix], [], "hexpm", "6518566b56123ffedaf3ad776f0e8d14c85ebc27f7cb2c300c60248a6f3c55bd"},
+  "figlet": {:hex, :figlet, "0.1.0", "9ef6963d9d360748e24b5c6f7ee6c485050b7f961b9a38c6fffba2610eee1289", [:mix], [], "hexpm", "db78e4178b82e817807a9e973f69a6bb27976ed31906a9ea278982c2e8cea9df"},
+}
