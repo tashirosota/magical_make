@@ -6,6 +6,7 @@ defmodule MagicalMake.Make do
   @make_x_range 0..100
   @circle_x_center 75
   @ciercle_y_make_start 17
+  @font elem(Chisel.Font.load("priv/assets/5x8.bdf"), 1)
 
   def make_check! do
     System.find_executable(@make) ||
@@ -44,14 +45,12 @@ defmodule MagicalMake.Make do
   end
 
   defp create_make_texts(make_command) do
-    {:ok, font} = Chisel.Font.load("lib/texts/5x8.bdf")
-
     {pixels, _, _} =
       Chisel.Renderer.reduce_draw_text(
         @make <> " " <> make_command,
         0,
         0,
-        font,
+        @font,
         [],
         fn x, y, pixels -> [{x, y} | pixels] end
       )

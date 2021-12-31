@@ -12,7 +12,6 @@ defmodule MagicalMake.MixProject do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       escript: escript(),
-      # docs
       description: @description,
       name: "MagicalMake",
       source_url: @source_url,
@@ -40,7 +39,8 @@ defmodule MagicalMake.MixProject do
 
   defp deps do
     [
-      {:chisel, "~> 0.2.0"}
+      {:chisel, "~> 0.2.0"},
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
 end

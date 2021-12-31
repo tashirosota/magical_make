@@ -1,5 +1,4 @@
 defmodule MagicalMake.Circle do
-  @txt_file_numbers 1..5
   @last_word "M"
   @gsub_words [
     ".",
@@ -8,10 +7,19 @@ defmodule MagicalMake.Circle do
     "I",
     @last_word
   ]
+  @assets_path "priv/assets/circles/"
+  # https://elixirforum.com/t/is-it-possible-to-include-resource-files-when-packaging-my-project-using-mix-escript/730/11
+  @circle_texts [
+    elem(File.read(@assets_path <> "1.txt"), 1),
+    elem(File.read(@assets_path <> "2.txt"), 1),
+    elem(File.read(@assets_path <> "3.txt"), 1),
+    elem(File.read(@assets_path <> "4.txt"), 1),
+    elem(File.read(@assets_path <> "5.txt"), 1)
+  ]
 
+  @spec draw_circle(any, binary) :: binary
   def draw_circle(interval, font_decoration) do
-    {:ok, circle_txt} =
-      "lib/texts/circles/#{@txt_file_numbers |> Enum.random()}.txt" |> File.read()
+    circle_txt = @circle_texts |> Enum.random()
 
     Enum.each(@gsub_words ++ [], fn word ->
       (font_decoration <> String.replace(circle_txt, ~r/\S/, word))

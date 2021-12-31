@@ -4,6 +4,6 @@ defmodule MagicalMake.CLITest do
   test "main" do
     cmd = "hello"
 
-    assert MagicalMake.CLI.main(cmd) == :ok
+    assert MagicalMake.CLI.main([cmd]) == :ok
   end
 end
