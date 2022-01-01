@@ -1,4 +1,7 @@
 defmodule MagicalMake.Make do
+  @moduledoc """
+  Performs operations related to the Make command.
+  """
   @make "make"
   @asc_word "※"
   @pin_word "@"
@@ -8,6 +11,12 @@ defmodule MagicalMake.Make do
   @ciercle_y_make_start 17
   @font elem(Chisel.Font.load("priv/assets/5x8.bdf"), 1)
 
+  @doc """
+  Check for exists makefile.
+  ## Examples
+      iex> MagicalMake.Make.make_check!
+      :ok # When Makefile exists
+  """
   @spec make_check! :: :ok
   def make_check! do
     System.find_executable(@make) ||
@@ -17,6 +26,13 @@ defmodule MagicalMake.Make do
     :ok
   end
 
+  @doc """
+  Executes make command.
+  ## Examples
+      iex> MagicalMake.Make.exec_make("hello")
+      # exec make command
+      :ok # Succeed
+  """
   @spec exec_make(String.t()) :: :ok
   def exec_make(command) do
     MagicalMake.SystemCommand.exec(
@@ -26,6 +42,12 @@ defmodule MagicalMake.Make do
     )
   end
 
+  @doc """
+  Draws Make command for ascii art.
+  ## Examples
+      iex> MagicalMake.Make.draw_make("hello")
+      :ok # Succeed
+  """
   @spec draw_make(String.t(), String.t(), non_neg_integer()) :: :ok
   def draw_make(circle_text, make_command, interval) do
     create_make_art(circle_text, make_command)

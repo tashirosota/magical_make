@@ -1,4 +1,7 @@
 defmodule MagicalMake.Circle do
+  @moduledoc """
+  For Magic circle's ascii art.
+  """
   @last_word "M"
   @gsub_words [
     ".",
@@ -17,6 +20,10 @@ defmodule MagicalMake.Circle do
     elem(File.read(@assets_path <> "5.txt"), 1)
   ]
 
+  @doc """
+  Puts Magic circle's ascii art and refresh.
+  Draws gradually with each words[".", ":", ";", "I", "M"]
+  """
   @spec draw_circle(non_neg_integer(), String.t()) :: String.t()
   def draw_circle(interval, font_decoration) do
     circle_txt = @circle_texts |> Enum.random()

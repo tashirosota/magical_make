@@ -1,9 +1,22 @@
 defmodule MagicalMake.CLI do
+  @moduledoc """
+  CLI module for escript.
+  """
   @option %{
     help: ["help", "-h", "--help"],
     version: ["version", "-v", "--version"]
   }
 
+  @doc """
+  Main function for escript.You can use `help`, `version` and make command executable.
+  ## Examples
+      iex> MagicalMake.CLI.main("hello")
+      # Exec make hello
+      :ok
+      iex> MagicalMake.CLI.main("-v")
+      # Displays version
+      :version
+  """
   @spec main(any) :: :help | :version | :ok
   def main(args \\ []) do
     case parse_args(args) do
