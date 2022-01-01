@@ -1,10 +1,10 @@
 defmodule MagicalMake.CircleTest do
-  import MagicalMake.Font, only: [create_decoration: 1]
+  import MagicalMake.Font, only: [create_decoration: 0]
   use ExUnit.Case
   doctest MagicalMake.Circle
 
   test "select" do
-    font_decoration = create_decoration([])
+    font_decoration = create_decoration()
     interval = 100
     assert MagicalMake.Circle.draw_circle(interval, font_decoration) =~ "MMM"
   end

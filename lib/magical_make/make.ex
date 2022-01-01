@@ -8,6 +8,7 @@ defmodule MagicalMake.Make do
   @ciercle_y_make_start 17
   @font elem(Chisel.Font.load("priv/assets/5x8.bdf"), 1)
 
+  @spec make_check! :: :ok
   def make_check! do
     System.find_executable(@make) ||
       raise MagicalMake.MakefileMissing,
@@ -16,6 +17,7 @@ defmodule MagicalMake.Make do
     :ok
   end
 
+  @spec exec_make(String.t()) :: :ok
   def exec_make(command) do
     MagicalMake.SystemCommand.exec(
       @make,
@@ -24,6 +26,7 @@ defmodule MagicalMake.Make do
     )
   end
 
+  @spec draw_make(String.t(), String.t(), non_neg_integer()) :: :ok
   def draw_make(circle_text, make_command, interval) do
     create_make_art(circle_text, make_command)
     |> MagicalMake.Painter.draw(interval)

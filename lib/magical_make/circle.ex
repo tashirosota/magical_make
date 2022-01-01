@@ -17,7 +17,7 @@ defmodule MagicalMake.Circle do
     elem(File.read(@assets_path <> "5.txt"), 1)
   ]
 
-  @spec draw_circle(any, binary) :: binary
+  @spec draw_circle(non_neg_integer(), String.t()) :: String.t()
   def draw_circle(interval, font_decoration) do
     circle_txt = @circle_texts |> Enum.random()
 

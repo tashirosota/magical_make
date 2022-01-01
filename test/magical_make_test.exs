@@ -1,7 +1,6 @@
 defmodule MagicalMakeTest do
   use ExUnit.Case
-  # TODO: doctestに関して
-  # doctest MagicalMake
+  doctest MagicalMake
 
   test ".execute" do
     cmd = "hello"

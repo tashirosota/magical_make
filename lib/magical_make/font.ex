@@ -10,9 +10,8 @@ defmodule MagicalMake.Font do
     cyan: "#{@esc}[36m"
   ]
 
-  def create_decoration(opts \\ [color_code: nil, other_code: nil]) do
-    color_code = Keyword.get(opts, :color_code) || @colors |> Keyword.values() |> Enum.random()
-    other_code = Keyword.get(opts, :other_code) || ""
-    color_code <> other_code
+  @spec create_decoration :: String.t()
+  def create_decoration() do
+    @colors |> Keyword.values() |> Enum.random()
   end
 end

@@ -1,6 +1,6 @@
 defmodule MagicalMake.MixProject do
   use Mix.Project
-  @versoin "0.1.0"
+  @versoin "0.1.2"
   @source_url "https://github.com/tashirosota/magical_make"
   @description "Decorate your make commands with Magic Circle"
 

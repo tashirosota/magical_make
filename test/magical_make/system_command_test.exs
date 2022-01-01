@@ -1,11 +1,21 @@
 defmodule MagicalMake.SystemCommandTest do
   use ExUnit.Case
-  # TODO: imp
-  # test "sys_cmd" do
+  doctest MagicalMake.SystemCommand
 
-  # end
+  test "sys_cmd/1" do
+    assert MagicalMake.SystemCommand.sys_cmd(:clear) == :ok
+    assert MagicalMake.SystemCommand.sys_cmd(:font_reset) == :ok
 
-  # test "exec" do
+    assert_raise KeyError, fn ->
+      MagicalMake.SystemCommand.sys_cmd(:test)
+    end
+  end
 
-  # end
+  test "exec/3" do
+    assert MagicalMake.SystemCommand.exec(
+             "make",
+             ["hello"],
+             into: IO.stream(:stdio, :line)
+           ) == :ok
+  end
 end

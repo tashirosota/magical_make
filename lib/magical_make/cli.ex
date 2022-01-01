@@ -3,6 +3,8 @@ defmodule MagicalMake.CLI do
     help: ["help", "-h", "--help"],
     version: ["version", "-v", "--version"]
   }
+
+  @spec main(any) :: :help | :version | :ok
   def main(args \\ []) do
     case parse_args(args) do
       {:ok, make_command} -> make_command |> MagicalMake.execute()
@@ -43,5 +45,7 @@ defmodule MagicalMake.CLI do
         "magical make version " <> MagicalMake.version()
     end
     |> IO.puts()
+
+    option_cmd
   end
 end
