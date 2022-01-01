@@ -15,7 +15,11 @@ defmodule MagicalMake.MixProject do
       description: @description,
       name: "MagicalMake",
       source_url: @source_url,
-      package: package()
+      package: package(),
+      docs: [
+        main: "readme",
+        extras: ["README.md"]
+      ]
     ]
   end
 
@@ -31,6 +35,7 @@ defmodule MagicalMake.MixProject do
 
   defp package() do
     [
+      files: ["lib", "priv", "mix.*", "README.md"],
       licenses: ["Apache-2.0"],
       maintainers: ["Sota Tashiro"],
       links: %{"GitHub" => @source_url}
