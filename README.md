@@ -1,10 +1,10 @@
 <!-- @format -->
 
-[![hex.pm version](https://img.shields.io/hexpm/v/ltsv.svg)](https://hex.pm/packages/magical_make)
-[![CI](https://github.com/tashirosota/magical_make/actions/workflows/ci.yml/badge.svg)](https://github.com/tashirosota/magical_make/actions/workflows/ci.yml)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/tashirosota/magical_make)
+[![hex.pm version](https://img.shields.io/hexpm/v/ltsv.svg)](https://hex.pm/packages/poke_make)
+[![CI](https://github.com/tashirosota/poke_make/actions/workflows/ci.yml/badge.svg)](https://github.com/tashirosota/poke_make/actions/workflows/ci.yml)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/tashirosota/poke_make)
 
-# MagicalMake
+# PokeMake
 
 **Command line tool to decorate your make commands with Magic Circle made by Elixir**
 
@@ -15,29 +15,29 @@
 - Homebrew
 
 ```
-$ brew install tashirosota/homebrew-tap/magical_make
+$ brew install tashirosota/homebrew-tap/poke_make
 ```
 
 - escript
 
 ```
-$ mix escript.install hex magical_make
+$ mix escript.install hex poke_make
 $ export PATH=$PATH:~/.mix/escripts
 ```
 
 ## Usage
 
 ```
-$ mgc -h
-usage: mgc [version | -v | --version]
+$ poke -h
+usage: poke [version | -v | --version]
            [help | -h | --help]
            <make command>
 
-mgc <make command> is to start make <make command>
+poke <make command> is to start make <make command>
 $ cat Makefile
 hello:
 	echo hello
-$ mgc hello
+$ poke hello
 
 =====================================================================================
                           ※              ※          ※※   ※※
